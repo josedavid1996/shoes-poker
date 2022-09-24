@@ -178,15 +178,17 @@ export default function HomePage() {
 
   return (
     <>
-      <div className="absolute grid grid-cols-8  w-[1240px] left-0 right-0 mx-auto overflow-x-scroll  z-20 ">
-        <Buttons name={'Suela'} setColor={setColorSuela} />
-        <Buttons name={'Cordones'} setColor={setColorCordones} />
-        <Buttons name={'Exterior'} setColor={setColorMalla} />
-        <Buttons name={'Argolla'} setColor={setBotonesCordones} />
-        <Buttons name={'Interior'} setColor={setInterior} />
-        <Buttons name={'Lateral'} setColor={setLateralDecoration} />
-        <Buttons name={'Superior'} setColor={setSuperiorDecoration} />
-        <Buttons name={'Trasera'} setColor={setTraseraDecoration} />
+      <div className="w-full relative overflow-x-scroll  z-20 h-[165px] overflow-y-hidden contenedor">
+        <div className="absolute grid grid-cols-8 w-[1240px] left-0 right-0 mx-auto  ">
+          <Buttons name={'Suela'} setColor={setColorSuela} />
+          <Buttons name={'Cordones'} setColor={setColorCordones} />
+          <Buttons name={'Exterior'} setColor={setColorMalla} />
+          <Buttons name={'Argolla'} setColor={setBotonesCordones} />
+          <Buttons name={'Interior'} setColor={setInterior} />
+          <Buttons name={'Lateral'} setColor={setLateralDecoration} />
+          <Buttons name={'Superior'} setColor={setSuperiorDecoration} />
+          <Buttons name={'Trasera'} setColor={setTraseraDecoration} />
+        </div>
       </div>
 
       <Canvas
