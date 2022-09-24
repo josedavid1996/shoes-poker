@@ -1,4 +1,4 @@
-import { Suspense, useRef, useState, useEffect } from 'react'
+import { Suspense, useRef, useState, useEffect, useContext } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import {
   ContactShadows,
@@ -8,9 +8,13 @@ import {
 } from '@react-three/drei'
 import { HexColorPicker } from 'react-colorful'
 import { proxy, useSnapshot } from 'valtio'
+import { Colores } from '../components/Colores'
+import { Buttons } from '../components/Buttons'
+import { ColorContext } from '../context'
 
 // Using a Valtio state model to bridge reactivity between
 // the canvas and the dom, both can write to it and/or react to it.
+
 const state = proxy({
   current: null,
   items: {
@@ -27,7 +31,17 @@ const state = proxy({
 
 function Shoe() {
   const ref = useRef()
-  console.log(ref)
+  const {
+    colorCordones,
+    colorMalla,
+    colorSuela,
+    colorBotonesCordones,
+    colorInterior,
+    colorLateralDecoration,
+    colorSuperiorDecoration,
+    colorTraseraDecoration
+  } = useContext(ColorContext)
+
   const snap = useSnapshot(state)
   // Drei's useGLTF hook sets up draco automatically, that's how it differs from useLoader(GLTFLoader, url)
   // { nodes, materials } are extras that come from useLoader, these do not exist in threejs/GLTFLoader
@@ -76,56 +90,56 @@ function Shoe() {
         castShadow
         geometry={nodes.shoe.geometry}
         material={materials.laces}
-        material-color={snap.items.laces}
+        material-color={colorCordones}
       />
       <mesh
         receiveShadow
         castShadow
         geometry={nodes.shoe_1.geometry}
         material={materials.mesh}
-        material-color={snap.items.mesh}
+        material-color={colorMalla}
       />
       <mesh
         receiveShadow
         castShadow
         geometry={nodes.shoe_2.geometry}
         material={materials.caps}
-        material-color={snap.items.caps}
+        material-color={colorBotonesCordones}
       />
       <mesh
         receiveShadow
         castShadow
         geometry={nodes.shoe_3.geometry}
         material={materials.inner}
-        material-color={snap.items.inner}
+        material-color={colorInterior}
       />
       <mesh
         receiveShadow
         castShadow
         geometry={nodes.shoe_4.geometry}
         material={materials.sole}
-        material-color={snap.items.sole}
+        material-color={colorSuela}
       />
       <mesh
         receiveShadow
         castShadow
         geometry={nodes.shoe_5.geometry}
         material={materials.stripes}
-        material-color={snap.items.stripes}
+        material-color={colorLateralDecoration}
       />
       <mesh
         receiveShadow
         castShadow
         geometry={nodes.shoe_6.geometry}
         material={materials.band}
-        material-color={snap.items.band}
+        material-color={colorSuperiorDecoration}
       />
       <mesh
         receiveShadow
         castShadow
         geometry={nodes.shoe_7.geometry}
         material={materials.patch}
-        material-color={snap.items.patch}
+        material-color={colorTraseraDecoration}
       />
     </group>
   )
@@ -150,8 +164,31 @@ function Picker() {
 }
 
 export default function HomePage() {
+  // importacion del context para mandarlo al componente button
+  const {
+    setColorSuela,
+    setColorCordones,
+    setColorMalla,
+    setBotonesCordones,
+    setInterior,
+    setLateralDecoration,
+    setSuperiorDecoration,
+    setTraseraDecoration
+  } = useContext(ColorContext)
+
   return (
     <>
+      <div className="absolute grid grid-cols-8  w-[1240px] left-0 right-0 mx-auto overflow-x-scroll  z-20 ">
+        <Buttons name={'Suela'} setColor={setColorSuela} />
+        <Buttons name={'Cordones'} setColor={setColorCordones} />
+        <Buttons name={'Exterior'} setColor={setColorMalla} />
+        <Buttons name={'Argolla'} setColor={setBotonesCordones} />
+        <Buttons name={'Interior'} setColor={setInterior} />
+        <Buttons name={'Lateral'} setColor={setLateralDecoration} />
+        <Buttons name={'Superior'} setColor={setSuperiorDecoration} />
+        <Buttons name={'Trasera'} setColor={setTraseraDecoration} />
+      </div>
+
       <Canvas
         shadows
         camera={{
@@ -185,7 +222,7 @@ export default function HomePage() {
           enablePan={false}
         />
       </Canvas>
-      <Picker />
+      {/* <Picker /> */}
     </>
   )
 }

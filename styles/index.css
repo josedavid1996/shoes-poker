@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://rsms.me/inter/inter.css');
+:root {
+  --i: 0;
+  --i: 1;
+  --i: 2;
+  --i: 3;
+  --i: 4;
+}
+
+.rojo {
+  --i: 0;
+}
+.amarillo {
+  --i: 1;
+}
+.azul {
+  --i: 2;
+}
+.verde {
+  --i: 3;
+}
+.rosado {
+  --i: 4;
+}
+html,
+body,
+#root {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  outline: none;
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  background: white;
+  font-family: 'Inter var', sans-serif;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  outline: none;
+  width: 100vw;
+  height: 100vh;
+}
+
+#root {
+  width: 76ch;
+}
+.button-circle {
+  pointer-events: none;
+}
+.button-circle:hover div span {
+  display: block;
+}
+
+h1 {
+  position: absolute;
+  top: 43px;
+  left: 140px;
+  padding: 0;
+  margin: 40px;
+  font-size: 5em;
+  font-weight: 600;
+  line-height: 0.7em;
+  letter-spacing: -6px;
+  color: #272730;
+}
+
+.picker {
+  position: absolute !important;
+  top: 74px;
+  left: 70px;
+  width: 90px !important;
+  height: 90px !important;
+}
+canvas {
+  width: 600px !important;
+}
+
+.menu {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: rgba(255, 0, 0, 0.296); */
+}
+
+.menu li {
+  position: absolute;
+  list-style: none;
+  left: 4px;
+  transform-origin: 74px;
+  transition: 0.5s;
+  transition-delay: calc(0.1s * var(--i));
+  transform: rotate(0deg) translateX(74px);
+}
+.menu.active li {
+  transform: rotate(calc(360deg / 5 * var(--i)));
+}
+
+.toggle {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background-color: #164e63;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+  color: white;
+  font-weight: 600;
+}
