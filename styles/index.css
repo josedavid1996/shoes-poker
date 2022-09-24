@@ -34,7 +34,7 @@ body,
   overflow: hidden;
   outline: none;
   width: 100vw;
-  height: calc(100vh - 200px);
+  height: 100vh;
 }
 
 body {
@@ -105,26 +105,15 @@ canvas {
   position: absolute;
   width: 80px;
   height: 80px;
-  background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.15) 0%,
-      rgba(0, 0, 0, 0.15) 100%
-    ),
-    radial-gradient(
-        at top center,
-        rgba(255, 255, 255, 0.4) 0%,
-        rgba(0, 0, 0, 0.4) 120%
-      )
-      #989898;
-  background-blend-mode: multiply, multiply;
+  background: #c3cfe2;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
-  color: #fff;
+  box-shadow: 0 3px 4px #627fb3;
+  color: #627fb3;
   font-weight: 600;
 }
 
@@ -137,5 +126,5 @@ canvas {
   @apply rounded bg-gray-200 mx-1;
 }
 .contenedor::-webkit-scrollbar-thumb {
-  @apply rounded bg-[#989898];
+  @apply rounded bg-[#627FB3];
 }

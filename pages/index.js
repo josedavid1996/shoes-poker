@@ -4,11 +4,12 @@ import {
   ContactShadows,
   Environment,
   useGLTF,
-  OrbitControls
+  OrbitControls,
+  Stars
 } from '@react-three/drei'
 import { HexColorPicker } from 'react-colorful'
 import { proxy, useSnapshot } from 'valtio'
-import { Colores } from '../components/Colores'
+
 import { Buttons } from '../components/Buttons'
 import { ColorContext } from '../context'
 
@@ -177,8 +178,8 @@ export default function HomePage() {
   } = useContext(ColorContext)
 
   return (
-    <>
-      <div className="w-full relative overflow-x-auto  z-20 h-[165px] overflow-y-hidden contenedor">
+    <div className="grid grid-cols-1 h-[100vh]">
+      {/* <div className="w-full relative overflow-x-auto  z-20 h-[165px] overflow-y-hidden contenedor bottom-0">
         <div className="absolute grid grid-cols-8 w-[1240px] left-0 right-0 mx-auto  ">
           <Buttons name={'Suela'} setColor={setColorSuela} />
           <Buttons name={'Cordones'} setColor={setColorCordones} />
@@ -189,8 +190,7 @@ export default function HomePage() {
           <Buttons name={'Superior'} setColor={setSuperiorDecoration} />
           <Buttons name={'Trasera'} setColor={setTraseraDecoration} />
         </div>
-      </div>
-
+      </div> */}
       <Canvas
         shadows
         camera={{
@@ -224,7 +224,19 @@ export default function HomePage() {
           enablePan={false}
         />
       </Canvas>
+      <div className="w-full relative overflow-x-auto  z-20 h-[165px] overflow-y-hidden contenedor bottom-0 mb-4">
+        <div className="absolute grid grid-cols-8 w-[1240px] left-0 right-0 mx-auto ">
+          <Buttons name={'Suela'} setColor={setColorSuela} />
+          <Buttons name={'Cordones'} setColor={setColorCordones} />
+          <Buttons name={'Exterior'} setColor={setColorMalla} />
+          <Buttons name={'Argolla'} setColor={setBotonesCordones} />
+          <Buttons name={'Interior'} setColor={setInterior} />
+          <Buttons name={'Lateral'} setColor={setLateralDecoration} />
+          <Buttons name={'Superior'} setColor={setSuperiorDecoration} />
+          <Buttons name={'Trasera'} setColor={setTraseraDecoration} />
+        </div>
+      </div>
       {/* <Picker /> */}
-    </>
+    </div>
   )
 }
