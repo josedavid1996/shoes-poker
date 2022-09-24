@@ -178,7 +178,7 @@ export default function HomePage() {
 
   return (
     <>
-      <div className="w-full relative overflow-x-scroll  z-20 h-[165px] overflow-y-hidden contenedor">
+      <div className="w-full relative overflow-x-auto  z-20 h-[165px] overflow-y-hidden contenedor">
         <div className="absolute grid grid-cols-8 w-[1240px] left-0 right-0 mx-auto  ">
           <Buttons name={'Suela'} setColor={setColorSuela} />
           <Buttons name={'Cordones'} setColor={setColorCordones} />
