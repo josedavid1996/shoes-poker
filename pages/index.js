@@ -48,6 +48,8 @@ function Shoe() {
   // { nodes, materials } are extras that come from useLoader, these do not exist in threejs/GLTFLoader
   // nodes is a named collection of meshes, materials a named collection of materials
   const { nodes, materials } = useGLTF('shoe-draco.glb')
+  const figura = useGLTF('shoe-draco.glb')
+  console.log(figura)
 
   // Animate model
   useFrame((state) => {
@@ -195,7 +197,7 @@ export default function HomePage() {
         shadows
         camera={{
           position: [0, 0, 4],
-          fov: 50
+          fov: 30
         }}
       >
         <ambientLight intensity={0.7} />
