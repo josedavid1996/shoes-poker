@@ -48,8 +48,6 @@ function Shoe() {
   // { nodes, materials } are extras that come from useLoader, these do not exist in threejs/GLTFLoader
   // nodes is a named collection of meshes, materials a named collection of materials
   const { nodes, materials } = useGLTF('shoe-draco.glb')
-  const figura = useGLTF('shoe-draco.glb')
-  console.log(figura)
 
   // Animate model
   useFrame((state) => {
@@ -167,6 +165,11 @@ function Picker() {
 }
 
 export default function HomePage() {
+  // funcion para que a uno solo le aparezca la opcion de cambiar el color
+  if (typeof window !== 'undefined') {
+    const circlesCards = document.querySelectorAll('.menu.active li')
+    // console.log(circlesCards)
+  }
   // importacion del context para mandarlo al componente button
   const {
     setColorSuela,
@@ -228,14 +231,14 @@ export default function HomePage() {
       </Canvas>
       <div className="w-full relative overflow-x-auto  z-20 h-[165px] overflow-y-hidden contenedor bottom-0 mb-4">
         <div className="absolute grid grid-cols-8 w-[1240px] left-0 right-0 mx-auto ">
-          <Buttons name={'Suela'} setColor={setColorSuela} />
-          <Buttons name={'Cordones'} setColor={setColorCordones} />
-          <Buttons name={'Exterior'} setColor={setColorMalla} />
-          <Buttons name={'Argolla'} setColor={setBotonesCordones} />
-          <Buttons name={'Interior'} setColor={setInterior} />
-          <Buttons name={'Lateral'} setColor={setLateralDecoration} />
-          <Buttons name={'Superior'} setColor={setSuperiorDecoration} />
-          <Buttons name={'Trasera'} setColor={setTraseraDecoration} />
+          <Buttons id={1} name={'Suela'} setColor={setColorSuela} />
+          <Buttons id={2} name={'Cordones'} setColor={setColorCordones} />
+          <Buttons id={3} name={'Exterior'} setColor={setColorMalla} />
+          <Buttons id={4} name={'Argolla'} setColor={setBotonesCordones} />
+          <Buttons id={5} name={'Interior'} setColor={setInterior} />
+          <Buttons id={6} name={'Lateral'} setColor={setLateralDecoration} />
+          <Buttons id={7} name={'Superior'} setColor={setSuperiorDecoration} />
+          <Buttons id={8} name={'Trasera'} setColor={setTraseraDecoration} />
         </div>
       </div>
       {/* <Picker /> */}
